@@ -1,7 +1,7 @@
 ![Polkaっぽい画像](./polka.png)
 <h1 align="center">Polka</h1>
 
-<div align="center;">このマイクロウェブサーバが速すぎてあなたは踊るでしょう！:dancers:</div>
+<div align="center">このマイクロウェブサーバが速すぎてあなたは踊るでしょう！:dancers:</div>
 
 
 
@@ -71,6 +71,40 @@ Type: `Function`
 
 ミドルウェアがエラーをスローするたびに catch-all errorHandler が実行されます。デフォルトの動作が気に入らない場合は、これを変更してください。
 
-その引数は`（err、req、res、next）`です。ここで、`err`はミドルウェアによってスローされた`String`または`Error`です。
->注意 : 
->
+その引数は`（err, req, res, next）`です。ここで、`err`はミドルウェアによってスローされた`String`または`Error`です。
+>注意 : `next()`を使用して、自分で特定のエラーを回避してください!<br />
+>あなたは特定の例外が、他の場所で処理されるか安全に無視するか選択することができます。<br />
+>そうしないとレスポンスが終了しません!
+
+####options.onNoMatch
+Type: `Function`
+
+`404` status や `Not found` responseのルート定義が一致しなかった場合の処理を変更することができます。
+
+その引数は`(req, res)`でレスポンスを終了する必要があります。
+
+####use(base,...fn)
+[middleware(s)]()やsub-application(s)をサーバーに接続します。これらは、ルート処理の前に実行されます。
+
+#####重要: `base`のパス名が指定されている場合、同じ`use()`ブロック内の全ての関数は、`req,path`が`base`のパスと一致した場合`のみ`実行します。
+
+#####base
+Type: `String`
+Default: `undefined`
+
+次の middleware(s) または sub-application をマウントする必要がある base パス。
+
+#####fn
+Type: Function|Array
+
+一度に1つ以上の関数を渡すことができます。各関数には、標準化された`(req, res, next)`引数が必要です。
+
+sub-application に `base` パスを命名することで sub-application を渡すこともできます。
+
+詳細については、`[Middleware]()`. [Express' middleware examples]()の例を参照してください。
+
+####parse(req)
+Returns: `Object` or `undefined`
+
+80 250 123
+68 71 90
