@@ -1,7 +1,7 @@
 ![Polkaっぽい画像](./polka.png)
 <h1 align="center">Polka</h1>
 
-<div style="text-align: center;">このマイクロウェブサーバが速すぎてあなたは踊るでしょう！:dancers:</div>
+<div align="center;">このマイクロウェブサーバが速すぎてあなたは踊るでしょう！:dancers:</div>
 
 
 
