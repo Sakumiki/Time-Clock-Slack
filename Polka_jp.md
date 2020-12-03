@@ -106,5 +106,3 @@ sub-application に `base` パスを命名することで sub-application を渡
 ####parse(req)
 Returns: `Object` or `undefined`
 
-80 250 123
-68 71 90
