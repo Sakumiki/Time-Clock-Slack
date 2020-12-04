@@ -83,18 +83,18 @@ Type: `Function`
 
 その引数は`(req, res)`でレスポンスを終了する必要があります。
 
-####use(base,...fn)
+###use(base,...fn)
 [middleware(s)]()やsub-application(s)をサーバーに接続します。これらは、ルート処理の前に実行されます。
 
-#####重要: `base`のパス名が指定されている場合、同じ`use()`ブロック内の全ての関数は、`req,path`が`base`のパスと一致した場合`のみ`実行します。
+#####重要: `base`のパス名が指定されている場合、同じ`use()`ブロック内の全ての関数は、`req, path`が`base`のパスと一致した場合`のみ`実行します。
 
-#####base
+####base
 Type: `String`
 Default: `undefined`
 
 次の middleware(s) または sub-application をマウントする必要がある base パス。
 
-#####fn
+####fn
 Type: Function|Array
 
 一度に1つ以上の関数を渡すことができます。各関数には、標準化された`(req, res, next)`引数が必要です。
@@ -103,6 +103,57 @@ sub-application に `base` パスを命名することで sub-application を渡
 
 詳細については、`[Middleware]()`. [Express' middleware examples]()の例を参照してください。
 
-####parse(req)
+###parse(req)
 Returns: `Object` or `undefined`
 
+これはv0.5.0以降での@ polka / urlモジュールのエイリアスです。ほとんどすべての場合において、変化はありません。
+
+しかし、どんな理由であれ `parseurl` を素早く変更できます。
+
+```
+const app = polka();
+app.parse = require('parseurl');
+//=> 完了!
+```
+
+###listen()
+Returns: `Polka`
+
+`[http.Server]()`を初めて起動 ( または作成 ) したとき、すべての引数は変更なしで`[server.listen]()`に直接引き渡されます。
+
+`v0.5.0`以降、このメソッドは Promise を返さなくなりました。代わりに、現在の Polka インスタンスが直接返され、連鎖操作が可能になります。
+```
+// 0.5.0以前ではこれができませんでした。
+const { server, handler } = polka().listen();
+
+// またはこれ!
+const app = polka().listen(PORT, onAppStart);
+
+app.use('users', require('./users'))
+  .get('/', (req, res) => {
+    res.end('Pretty cool!');
+  });
+```
+###handler(req, res, parsed)
+メインのPolka `IncomingMessage` ハンドラー。すべてのリクエストを受信し、受信したURLを既知のルートと照合しようとします。
+
+`req.url` がすぐに一致しない場合、Polkaは `req.url` の `[base]()` パスに一致するサブアプリケーションまたはミドルウェアグループを探します。
+>Note: サブアプリケーション内で定義されたミドルウェアはすべて、メインアプリ ( 別名、グローバル ) ミドルウェアの*後* 、サブアプリケーションのルートハンドラーの*前* に実行されます。
+
+ループの終わりに、ミドルウェアがまだ応答を終了していない（またはエラーをスローしている）場合、ルートハンドラーが見つかった場合は実行されます。それ以外の場合は、 `(404) Not found` が返され、`[options.onNoMatch]()`で構成できます。
+
+####req
+Type: `IncomingMessage`
+####res
+Type: `ServerResponse`
+####parsed
+Type: `Object`
+
+オプションで、パースされた [URL]() オブジェクトを提供します。入ってきたパスをすでにパースしている場合に便利です。それ以外の場合、`[app.parse]()` ( 別名 `[parseurl]()` ) がデフォルトで実行されます。
+
+##Routing
+ルートは、アプリケーションがさまざまな HTTP メソッドとエンドポイントにどのように応答するかを定義するために使用されます。
+>Expressからお越しの場合、ここに新しいものはありません!<br />
+>ただし、いくつかのパターンの変更については、`[比較]()` を確認してください。
+
+####基本
