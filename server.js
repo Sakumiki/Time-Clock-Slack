@@ -1,22 +1,25 @@
 const polka = require('polka');
-
-function one(req, res, next) {
-    req.hello = 'world';
-    next();
-}
-
-function two(req, res, next) {
-    req.foo = '...needs better demo 😔';
-    next();
-}
+const {
+    json
+} = require('body-parser');
+const {
+    PORT = 3000
+} = process.env;
 
 polka()
-    .use(one, two)
-    .get('/', (req, res) => {
-        console.log(`~> Hello, ${req.hello}`);
-        res.end(`Polka oruka?`);
+    .use(json())
+    .post('/', (req, res) => {
+        res.writeHead(200, {
+            'Content-Type': 'application/json'
+        });
+        let text = req.body.text;
+        let data = {
+            reponse_tipe: `in_channel`,
+            text: `ポルカおるよ`,
+        };
+        res.json(data);
     })
-    .listen(3000, err => {
+    .listen(PORT, err => {
         if (err) throw err;
-        console.log(`> Running on localhost:3000`);
+        console.log(`> Running on localhost:${PORT}`);
     });

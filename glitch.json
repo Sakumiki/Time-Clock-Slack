@@ -1,0 +1,3 @@
+{
+    "start": "nodemon server.js",
+}

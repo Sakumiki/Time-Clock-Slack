@@ -17,6 +17,7 @@ Polka は、非常に最小限でハイパフォーマンスな Express.js の�
 - Polka の場合最大90LOC、[このルーター](https://github.com/lukeed/trouter)を含めても120LOC
 
 ##インストール
+
 ```npm
 $ npm install --save polka
 ```
@@ -26,6 +27,7 @@ $ yarn add --dev polka
 ```
 
 ##使用法
+
 ```
 const polka = require('polka');
 
@@ -52,9 +54,11 @@ polka()
 ```
 
 ##API
+
 Polka は [Trouter](https://github.com/lukeed/trouter) を拡張しています。つまり、APIも継承します!
 
 ###polka(options)
+
 Polka〜 のインスタンスを返します！
 
 ####options.server
@@ -67,6 +71,7 @@ Polkaは、`[polka.listen]()`が呼び出されたときに*のみ*サーバー�
 >重要 : サーバーが提供されていない限り、`server`キーは`polka.listen`が呼び出されるまで`undefined`になります。
 
 ####options.onError
+
 Type: `Function`
 
 ミドルウェアがエラーをスローするたびに catch-all errorHandler が実行されます。デフォルトの動作が気に入らない場合は、これを変更してください。
@@ -77,6 +82,7 @@ Type: `Function`
 >そうしないとレスポンスが終了しません!
 
 ####options.onNoMatch
+
 Type: `Function`
 
 `404` status や `Not found` responseのルート定義が一致しなかった場合の処理を変更することができます。
@@ -84,17 +90,20 @@ Type: `Function`
 その引数は`(req, res)`でレスポンスを終了する必要があります。
 
 ###use(base,...fn)
+
 [middleware(s)]()やsub-application(s)をサーバーに接続します。これらは、ルート処理の前に実行されます。
 
 #####重要: `base`のパス名が指定されている場合、同じ`use()`ブロック内の全ての関数は、`req, path`が`base`のパスと一致した場合`のみ`実行します。
 
 ####base
+
 Type: `String`
 Default: `undefined`
 
 次の middleware(s) または sub-application をマウントする必要がある base パス。
 
 ####fn
+
 Type: Function|Array
 
 一度に1つ以上の関数を渡すことができます。各関数には、標準化された`(req, res, next)`引数が必要です。
@@ -104,6 +113,7 @@ sub-application に `base` パスを命名することで sub-application を渡
 詳細については、`[Middleware]()`. [Express' middleware examples]()の例を参照してください。
 
 ###parse(req)
+
 Returns: `Object` or `undefined`
 
 これはv0.5.0以降での@ polka / urlモジュールのエイリアスです。ほとんどすべての場合において、変化はありません。
@@ -117,6 +127,7 @@ app.parse = require('parseurl');
 ```
 
 ###listen()
+
 Returns: `Polka`
 
 `[http.Server]()`を初めて起動 ( または作成 ) したとき、すべての引数は変更なしで`[server.listen]()`に直接引き渡されます。
@@ -135,6 +146,7 @@ app.use('users', require('./users'))
   });
 ```
 ###handler(req, res, parsed)
+
 メインのPolka `IncomingMessage` ハンドラー。すべてのリクエストを受信し、受信したURLを既知のルートと照合しようとします。
 
 `req.url` がすぐに一致しない場合、Polkaは `req.url` の `[base]()` パスに一致するサブアプリケーションまたはミドルウェアグループを探します。
@@ -143,15 +155,21 @@ app.use('users', require('./users'))
 ループの終わりに、ミドルウェアがまだ応答を終了していない（またはエラーをスローしている）場合、ルートハンドラーが見つかった場合は実行されます。それ以外の場合は、 `(404) Not found` が返され、`[options.onNoMatch]()`で構成できます。
 
 ####req
+
 Type: `IncomingMessage`
+
 ####res
+
 Type: `ServerResponse`
+
 ####parsed
+
 Type: `Object`
 
 オプションで、パースされた [URL]() オブジェクトを提供します。入ってきたパスをすでにパースしている場合に便利です。それ以外の場合、`[app.parse]()` ( 別名 `[parseurl]()` ) がデフォルトで実行されます。
 
 ##Routing
+
 ルートは、アプリケーションがさまざまな HTTP メソッドとエンドポイントにどのように応答するかを定義するために使用されます。
 >Expressからお越しの場合、ここに新しいものはありません!<br />
 >ただし、いくつかのパターンの変更については、`[比較]()` を確認してください。
