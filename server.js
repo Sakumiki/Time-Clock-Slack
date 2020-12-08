@@ -1,23 +1,26 @@
-const polka = require('polka');
-const {
-    json
-} = require('body-parser');
+const app = require('polka');
+const body = require('body-parser');
 const {
     PORT = 3000
 } = process.env;
 
-polka()
-    .use(json())
-    .post('/', (req, res) => {
+app()
+    .use(body.json())
+    .use(body.urlencoded({
+        extended: true
+    }))
+    .post('/syukkin', (req, res) => {
         res.writeHead(200, {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-Error-Code': 'Please dont do this IRL'
         });
-        let text = req.body.text;
-        let data = {
-            reponse_tipe: `in_channel`,
-            text: `ポルカおるよ`,
-        };
-        res.json(data);
+        console.log(req.body.text);
+        let data = JSON.stringify({
+            response_type: `in_channel`,
+            text: `ポルカおるよ`
+        });
+        console.log(data);
+        res.end(data);
     })
     .listen(PORT, err => {
         if (err) throw err;
