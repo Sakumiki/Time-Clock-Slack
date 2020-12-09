@@ -168,5 +168,5 @@ dist
 .pnp.*
 
 # ex
-.pdf
-.xlsx
+*.pdf
+*.xlsx
