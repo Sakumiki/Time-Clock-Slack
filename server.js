@@ -1,5 +1,4 @@
 const app = require('polka');
-const routes = require('./routes');
 const dialog = require('./dialog');
 const {
     PORT = 3000
