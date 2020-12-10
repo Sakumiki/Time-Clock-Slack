@@ -1,12 +1,14 @@
 const app = require('polka');
 const body = require('body-parser');
 
+function arrive() {}
+
 module.exports = app()
     .use(body.json())
     .use(body.urlencoded({
         extended: true
     }))
-    .post('/', (req, res) => {
+    .post('/', async (req, res) => {
         res.writeHead(200, {
             'Content-Type': 'application/json',
             'X-Error-Code': 'Please dont do this IRL'
@@ -17,5 +19,5 @@ module.exports = app()
             text: 'ポルカおるよ'
         });
         console.log(data);
-        res.end(data);
+        await res.end(data);
     });

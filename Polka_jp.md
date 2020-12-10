@@ -1,4 +1,4 @@
-![Polkaっぽい画像](./polka.png)
+![Polkaっぽい画像](./asset/polka.png)
 <h1 align="center">Polka</h1>
 
 <div align="center">このマイクロウェブサーバが速すぎてあなたは踊るでしょう！:dancers:</div>
