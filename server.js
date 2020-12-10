@@ -1,7 +1,7 @@
 const app = require('polka');
 const modal = require('./app/modal');
 const arrive = require('./app/arrive');
-const hoem = require('./app/home');
+const home = require('./app/home');
 const {
     PORT = 3000
 } = process.env;
@@ -18,7 +18,7 @@ app()
                     subtype
                 } = req.body.event;
 
-                await home.events(req.body.type, type);
+                await home.events(type, user);
             }
             .listen(PORT, err => {
                 if (err) throw err;
