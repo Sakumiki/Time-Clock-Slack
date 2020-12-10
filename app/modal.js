@@ -21,5 +21,3 @@ module.exports = app()
         console.log(data);
         await res.end(data);
     });
-
-module.exports = modal;
