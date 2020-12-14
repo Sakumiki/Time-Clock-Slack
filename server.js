@@ -27,6 +27,18 @@ app()
 
         await home.events(type, user);
     })
+    .app.post('/slack/actions', async (req, res) => {
+        const {
+            token,
+            trigger_id,
+            user,
+            actions,
+            type
+        } = JSON.parse(req.body.payload);
+        if (actions && actions[0].action_id.match(/add_/)) {
+            openModal(trigger_id);
+        }
+    })
     .listen(PORT, err => {
         if (err) throw err;
         console.log(`> Running on localhost:${PORT}`);

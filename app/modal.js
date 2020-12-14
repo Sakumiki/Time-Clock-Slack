@@ -1,23 +1,37 @@
 const app = require('polka');
 const body = require('body-parser');
 
-function arrive() {}
+const openModal = async (trigger_id) => {
 
-module.exports = app()
-    .use(body.json())
-    .use(body.urlencoded({
-        extended: true
-    }))
-    .post('/', async (req, res) => {
-        res.writeHead(200, {
-            'Content-Type': 'application/json',
-            'X-Error-Code': 'Please dont do this IRL'
-        });
-        console.log(req.body.text);
-        let data = JSON.stringify({
-            response_type: 'in_channel',
-            text: 'ポルカおるよ'
-        });
-        console.log(data);
-        await res.end(data);
-    });
+    const modal = {
+        "type": "modal",
+        "title": {
+            "type": "plain_text",
+            "text": "My App",
+            "emoji": true
+        },
+        "submit": {
+            "type": "plain_text",
+            "text": "Submit",
+            "emoji": true
+        },
+        "close": {
+            "type": "plain_text",
+            "text": "Cancel",
+            "emoji": true
+        },
+        "blocks": [
+            {
+                "type": "divider"
+            }
+        ]
+    };
+
+    const args = {
+        token: process.env.SLACK_BOT_TOKEN,
+        trigger_id: trigger_id,
+        view: JSON.stringify(modal)
+    };
+
+    const result = await axios.post('/views.open', qs.stringify(args));
+};
