@@ -1,4 +1,5 @@
 const app = require("polka");
+var geolocation = require("geolocation");
 const body = require("body-parser");
 const modal = require("./app/modal");
 const arrive = require("./app/arrive");
@@ -27,16 +28,42 @@ app()
 
         await home.events(type, user);
     })
-    .app.post('/slack/actions', async (req, res) => {
+    .post("/slack/actions", async (req, res) => {
         const {
             token,
             trigger_id,
             user,
             actions,
             type
-        } = JSON.parse(req.body.payload);
+        } = JSON.parse(
+            req.body.payload
+        );
         if (actions && actions[0].action_id.match(/add_/)) {
-            openModal(trigger_id);
+            // Open a modal window with forms to be submitted by a user
+            modal.openModal(trigger_id);
+        } else if (actions && actions[0].action_id.match(/button-action/)) {
+            console.log("pushed button");
+            // geolocation test
+            geolocation.getCurrentPosition(function (err, position) {
+                if (err) throw err;
+                console.log(position);
+            });
+        }
+        // Modal forms submitted --
+        else if (type === "view_submission") {
+            res.send(""); // Make sure to respond to the server to avoid an error
+
+            const ts = new Date();
+            const {
+                user,
+                view
+            } = JSON.parse(req.body.payload);
+
+            const data = {};
+
+            home.events(user.id, data);
+        } else {
+            console.log("button error");
         }
     })
     .listen(PORT, err => {

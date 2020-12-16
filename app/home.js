@@ -19,7 +19,6 @@ const events = async (type, user) => {
 };
 
 const updateView = async user => {
-    console.log("aaa");
     let blocks = [
         {
             // Section with text and a button
