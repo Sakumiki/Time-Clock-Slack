@@ -4,6 +4,7 @@ const body = require("body-parser");
 const modal = require("./app/modal");
 const arrive = require("./app/arrive");
 const home = require("./app/home");
+const home = gl("./app/location");
 const {
     PORT = 3000
 } = process.env;
@@ -44,10 +45,7 @@ app()
         } else if (actions && actions[0].action_id.match(/button-action/)) {
             console.log("pushed button");
             // geolocation test
-            geolocation.getCurrentPosition(function (err, position) {
-                if (err) throw err;
-                console.log(position);
-            });
+            gl.getLocation();
         }
         // Modal forms submitted --
         else if (type === "view_submission") {
