@@ -1,19 +1,21 @@
-const gl = require('google-geolocation')({
-    key: 'AIzaSyDJ3NEdG_00sOLbA70grnutCIMP-rkTnS0',
-    timeout: 2500
-});
+const client = new Client({});
 
 
 // Get data
 const getLocation = async =>{
-
-    if (navigator.geolocation) {
-        console.log("この端末では位置情報が取得できます");
-        // Geolocation APIに対応していない
-    } else {
-        console.log("この端末では位置情報が取得できません");
-    }
-
+    client
+        .places({
+            params: {
+                key: process.env.GOOGLE_MAPS_API_KEY
+            },
+            timeout: 1000 // milliseconds
+        }, axiosInstance)
+        .then(r => {
+            console.log(r.data.results[0].elevation);
+        })
+        .catch(e => {
+            console.log(e);
+        });
 };
 
 
