@@ -25,14 +25,14 @@ const updateView = async user => {
             type: "section",
             text: {
                 type: "mrkdwn",
-                text: "*Welcome!* \nThis is a home for Stickers app. You can add small notes here!"
+                text: "*出勤、退勤の登録*"
             },
             accessory: {
                 type: "button",
                 action_id: "add_note",
                 text: {
                     type: "plain_text",
-                    text: "Add a Stickie"
+                    text: "登録"
                 }
             }
         },
