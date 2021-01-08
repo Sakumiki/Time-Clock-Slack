@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "time-clock-slack",
+  "private_key_id": "c6656a72aa2d42aeada26f16e6b6139f4bd41016",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCjFVgyyfb6vE2T\nQXAO/DiIaD9B5xzjZLEELrGEUWpETPZ4UiYfB98F1Rc3XbtfCxluJvjotdMmzn2b\nFMut9EnFNLH8QCUKD6vR/sjcZgEySIxK+vjLaLqaE1qYyYMb0A85YDsNCQzKAlx/\nIx+Bt6CnwplMfcM0iGmzB1VmhX3G0mZZ18kLM6Dp9QEgK6uT8ueYsYL4GdfIUKOM\nl/aMnzpIh3ZeeQqp5oQrgRT4wRpy8u6sFMm70ePMpVACZoELvq3DJVcJhcan6Xf0\n97f19QWQgvqPW1yzh6D5Ig6buIZTIxHtTxfESz+Xw6Vcg1sd/yzz2LS1zVRR+7Td\nrKpFYu1FAgMBAAECggEAFQRlL3Zzy/CEltuyE1xR9NJqhJXCVVPetElIO2M6rL62\nbN85ZnpfNaM2sL31rdQCXP3MykDUi4XFDj1p2mtHLpER9w5VN6y5WgDZ5f2HXfGX\nkvoxIhXHJqAj5tjheq4fqCdMtOtbqJURUpk2MEN4AubDVuZGR/jkllv1l5bQlNTI\nDZMb2CgstcJb+TQae+NZddMXhX8BH3N0GfUL5wol5AYNSy3IYRnqxRB+SmgspsMi\npRkoI/As+RZWK40zLcrJv8zoAC+g1oAYbfjNN/jA6H2OOA8w3BC/3YHEALyrX9kp\n/zz0zk6CduFzHf5qqLAPMG1Y6Bi7LOumLooZY+yiqQKBgQDM9kqzmDy4C2//x9L1\n1Iho8xu8cur8eLtx5AUGivzNVe8+9mXyDhWKItp3w4YMY4R+XJQXJYCGTmL/4q6A\ncqMYcyY2ABP/cPtCzP9Bdeb0XivtdNYLTPNANh8yIs31YE3EHTJdPgjygnYxfrX4\nUGChz+ibNK6kzNB2sPZIIR0QNwKBgQDLsWnCe2Pg/ZXdpyaWGqeere8W0xB3k5TY\nBM2u1jqN+wXHOLKKjFlgZFTLzDjXK6BY52xpsDFzhU/alZV8t/br+1nDOViHcCC8\npAXx9ebhNUvgIoph2fO8aXxrhXG/EKRjUiy7JyqTPVCLV+fq+9nVgcMUL8c7gNcB\n+Q4p8iOYYwKBgQClsOUq0oMjdXuRFwUf3jR4Qy/E5FG60A8YPvEhHPLJPBMwnxhC\n2cfn580czF9tXHYbgNPm8lY4PN4jZikThZj7hvr45I9GDRvSIM6pKJsQKaDxUWZH\ntGlhG1+UtDYziyrSw5eXcTLieTz7Pif1GWVE6kJsVeZpK3nKubwfC0XneQKBgQCN\nUtRL6QxNJ+P422X8MxYlFAyUS3BbZnuYvQxvx5bst0M1C/NkCShhpnrmwxSUxWIF\nDNu9IE/PFKlowOvskj6xT7zhpEH2BifQegTd8Xx0uGOiaJSWe3+OM6ntd7KJm+RS\nPMtoNi5l5d6iLyVrdb2XUuakdNnIQQXsCn53P9bOfQKBgGSLm2bgnmgzRW56IL2U\nbl0cVGYMGTeE8Naxtcw9SRJ6KyADfGR7fTg1p4joyOdM0p+JD007UlCmb8TyEqPr\nqAn/bSldF2sanORA0bmwdosLfBcyccN0OdHQ1MKT2AhVN1vEmh1caD96VBX6s45c\n/CpqT6m+crc7ytPishR9DmcW\n-----END PRIVATE KEY-----\n",
+  "client_email": "developer@time-clock-slack.iam.gserviceaccount.com",
+  "client_id": "109003463551411426436",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/developer%40time-clock-slack.iam.gserviceaccount.com"
+}
